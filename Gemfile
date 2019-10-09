@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-gem 'rails', '5.0.0'
+gem 'rails', '5.2.3'
 gem 'aws-sdk-s3',                 '1.46.0', require: false
 gem 'image_processing',           '1.9.3'
 gem 'mini_magick',                '4.9.5'
@@ -11,7 +11,7 @@ gem 'bootstrap-sass',             '3.4.1'
 gem 'puma',                       '3.12.1'
 gem 'sass-rails',                 '5.0.5'
 gem 'turbolinks',                 '5.2.0'
-gem 'jbuilder',                   '2.4.1'
+gem 'jbuilder',                   '2.9.1'
 gem 'bootsnap',                   '1.4.4', require: false
 
 group :development, :test do

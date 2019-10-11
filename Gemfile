@@ -3,6 +3,8 @@ gem 'rails', '5.2.3'
 gem 'aws-sdk-s3',                 '1.46.0', require: false
 gem 'image_processing',           '1.9.3'
 gem 'mini_magick',                '4.9.5'
+gem 'carrierwave',                '0.11.2'
+gem 'fog',                        '1.38.0'
 gem 'bcrypt',                     '3.1.13'
 gem 'faker',                      '2.1.2'
 gem 'will_paginate',              '3.1.8'
@@ -15,18 +17,22 @@ gem 'jbuilder',                   '2.9.1'
 gem 'bootsnap',                   '1.4.4', require: false
 
 group :development, :test do
-  gem 'sqlite3', '1.3.11'
-  gem 'byebug', '9.0.0', platform: :mri
+  gem 'mysql2', '~> 0.5.2'
+  gem 'byebug', platform: :mri
+  gem 'rspec-rails', '~> 3.5'
+  gem 'capybara'
+  gem 'database_cleaner'
 end
+
 group :development do
-  gem 'web-console', '3.1.1'
-  gem 'listen', '3.1.5'
-  gem 'spring', '1.7.2'
-  gem 'spring-watcher-listen', '2.0.0'
+  gem 'web-console',                 '3.1.1'
+  gem 'listen',                     '3.1.5'
+  gem 'spring',                     '1.7.2'
+  gem 'spring-watcher-listen',      '2.0.0'
 end
+
 group :test do
   gem 'rails-controller-testing', '0.1.1'
-  gem 'minitest-reporters', '1.1.9'
   gem 'guard', '2.13.0'
   gem 'guard-minitest', '2.4.4'
 end

@@ -16,6 +16,7 @@ gem 'turbolinks',                 '5.2.0'
 gem 'jbuilder',                   '2.9.1'
 gem 'bootsnap',                   '1.4.4', require: false
 gem 'email_validator'
+gem 'byebug'
 
 group :development, :test do
   gem 'mysql2', '~> 0.5.2'

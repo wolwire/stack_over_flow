@@ -1,0 +1,15 @@
+<li >
+  <span class="content"><%= simple_format(answer.content) %></span>
+  <br>
+  <div align="right">
+    <span class="user"><%= link_to answer.user.name, answer.user %> </span>
+    <span class="timestamp">Posted <%= time_ago_in_words(answer.created_at) %> ago.</span>
+    <span>
+  <% if current_user?(answer.user) %>
+    <%= link_to "delete", answer, method: :delete, data: { confirm: "You sure?" } %>
+  <% end %></span>
+    <h5>Comment<% answer.comments.count%></h5>
+    <%=render answer.comments %>
+  </div>
+  <hr>
+</li>

@@ -5,7 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Faker::Config.locale= :ru
 User.create!(name: "Example User",
              email: "agrawal.mayank1996@gmail.com",
              password: "123123",
@@ -13,7 +12,7 @@ User.create!(name: "Example User",
              admin: true,activated: true,
              activated_at: Time.zone.now)
 99.times do |n|
-  name = Faker::Name
+  name = Faker::Name.name
   email = "example-#{n+1}@railstutorial.org"
   password = "password"
   User.create!(name: name,
@@ -37,3 +36,26 @@ questions = Question.order(:created_at).take(10)
   content = Faker::Lorem.sentence(word_count: 50)
   questions.each { |ques| ques.answers.create!(content: content, user: ques.user)}
 end
+answers = Answer.order(:created_at).take(10)
+
+10.times do
+  content = Faker::Lorem.sentence(word_count: 5)
+  answers.each { |ans| ans.comments.create!(content: content, user: ans.user)}
+end
+
+10.times do |n|
+  content = "python#{n}"
+  Tag.create(name: content)
+end
+
+
+tags = Tag.order(:created_at).take(10)
+
+tags.each do |tag|
+  questions=Question.order(:created_at).take(10)
+  tag.questions<<questions
+end
+
+
+
+

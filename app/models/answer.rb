@@ -1,7 +1,8 @@
 class Answer < ApplicationRecord
-  belongs_to :user
-  belongs_to :question
-  has_many  :vote, as: :votable, dependent: :destroy
+  belongs_to :user, inverse_of: :answers
+  belongs_to :question, inverse_of: :answers
+  include Commentable, Votable
+
   validates :content, presence: true, length: {maximum: 30000,too_long: "%{count} characters is the maximum allowed" }
   mount_uploader :picture, PictureUploader
 

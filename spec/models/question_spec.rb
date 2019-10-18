@@ -28,6 +28,13 @@ RSpec.describe Question, type: :model do
       expect(ques.save).to be true
     end
 
+    it "validates question delete" do
+      ques = @user.questions.create(header: "a"*50,content: "a"*5000)
+      ques.save
+      expect(ques.dele)
+
+    end
+
 
   end
 end

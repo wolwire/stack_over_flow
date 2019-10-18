@@ -1,6 +1,8 @@
 class StaticPagesController < ApplicationController
   def home
-
+    if current_user
+      @questions = current_user.questions.paginate(page: params[:page])
+    end
   end
 
   def help
@@ -14,4 +16,5 @@ class StaticPagesController < ApplicationController
   def contact
 
   end
+
 end

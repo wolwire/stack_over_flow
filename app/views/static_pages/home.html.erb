@@ -1,11 +1,16 @@
 <% provide(:title, "Home") %>
-<h1>Home</h1>
-<p>
-  <%= form_with(url: search_path , method: "get") do %>
-    <%= label_tag(:search, "Search for:")  %>
-    <%= text_field_tag(:search)%>
-    <%= submit_tag "Search", class: "btn btn-primary" %>
-  <% end %>
-  <%= link_to "Sign up now!", '#', class: "btn btn-lg btn-primary" %>
+<% if logged_in? %>
+  <div class="row">
 
-</p>
+  <div class="col-md-8">
+    <%= render @questions %>
+  </div>
+
+  <% else%>
+    <p>
+      <%=render "questions/search" %>
+      <%= link_to "Sign up now!", '#', class: "btn btn-lg btn-primary" %>
+    </p>
+  </div>
+<% end %>
+

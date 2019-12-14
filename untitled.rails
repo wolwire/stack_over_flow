@@ -1,0 +1,26 @@
+<div class="panel-collapse" role="tabpanel" aria-labelledby="conversationIDHeading" aria-expanded="false" style="">
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-xs-6">
+        <h3>Summary</h3>
+        <%= render partial: 'summary', locals: { conversation: conversation } %>
+      </div>
+
+      <div class="col-xs-6">
+        <h3>Patient Details</h3>
+        <%= render partial: 'patient_details', locals: { conversation: conversation } %>
+      </div>
+    </div>
+  </div>
+  <div class="panel-body">
+    <h3>ERXES</h3>
+    <div class="row">
+      <%unless conversation.erxes.nil? %>
+          <%conversation.erxes.each do |erx|%>
+          	<%= render partial: 'erxes', locals: { erx: erx } %>
+          <% end %>
+        <%end %>
+    </div>
+	</div>    
+</div>
+

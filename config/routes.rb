@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-
-
   root 'static_pages#home'
   get 'static_pages/help'
   get 'sessions/new'
@@ -11,20 +9,22 @@ Rails.application.routes.draw do
   get "/contact", to: 'static_pages#contact'
   get "/help", to: 'static_pages#help'
 
-  get '/search', to: 'questions#search'
+
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
-  get '/signup', to: 'users#new'
   delete '/logout', to: 'sessions#destroy'
 
-  resources :user
-  resources :account_activation, only: [:edit]
+  get '/search', to: 'questions#search'
+
+  post '/upvote', to: 'votes#up_vote'
+  post '/downvote', to: 'votes#down_vote'
+  resources :users
+  resources :account_activations , only: [:edit]
   resources :password_resets , only:[:new, :create, :edit, :update]
-  resources :questions
+  resources :questions , except: [:create]
+
   resources :answers ,except: [:index,:show]
   resources :tags, only: [:index, :show]
   resources :comments, except: [:new, :index, :show]
-
-
 end
 

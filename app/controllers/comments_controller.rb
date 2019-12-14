@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
   before_action :correct_user, only: :destroy
 
   def create
-    @comment=current_user.comment.build(comment_params)
+    @comment=current_user.comments.build(comment_params)
     if @comment.save
       flash.now[:success] = "Comment created!"
       redirect_back(fallback_location: root_path)
@@ -34,7 +34,7 @@ class CommentsController < ApplicationController
 
   private
   def comment_params
-    params.require(:comment).permit( :content,:commentable_id, :commentable_type)
+    params.require(:comment).permit( :content,:commentable_id,:commentable_type)
   end
 
   def correct_user

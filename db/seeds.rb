@@ -56,6 +56,32 @@ tags.each do |tag|
   tag.questions<<questions
 end
 
+questions.each do |question|
+  users.each do |user|
+    question.vote.create(user_id: user.id, vote:true)
+  end
+  question.update(votes_rep:question.vote.where("vote is true").count-question.vote.where("vote is false").count)
+end
+
+
+
+users.each do |user|
+  s=0
+  user.questions.each do |question|
+    s += question.votes_rep
+  end
+  user.answers.each do |answer|
+    s += answer.votes_rep
+  end
+  user.update(reputation: s)
+end
+
+
+
+
+
+
+
 
 
 

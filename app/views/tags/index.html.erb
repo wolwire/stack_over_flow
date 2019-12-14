@@ -1,5 +1,5 @@
 <% provide(:title, 'Tags') %>
-<%will_paginate %>
+
 <div class="">
   <%@tags.each do |tag| %>
     <li><span><%= link_to tag.name, tag %></span></li>

@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(version: 2019_10_15_071044) do
   create_table "answers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.text "content"
     t.string "picture"
+    t.integer "votes_rep", default: 0
     t.bigint "user_id"
     t.bigint "question_id"
     t.datetime "created_at", null: false
@@ -38,7 +39,7 @@ ActiveRecord::Schema.define(version: 2019_10_15_071044) do
     t.string "header"
     t.text "content"
     t.string "picture"
-    t.integer "votes"
+    t.integer "votes_rep", default: 0
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

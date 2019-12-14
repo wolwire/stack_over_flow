@@ -27,9 +27,8 @@ class QuestionsController < ApplicationController
 
   def search
     @questions=search_ques(params[:search])
-    if @questions.nil? || @questions.empty?
+    if  @questions.empty?
       flash[:info] = "Couldn\'t find #{params[:search]}"
-      redirect_to root_path
     else
       @questions=@questions.paginate(page: params[:page])
     end
@@ -64,7 +63,9 @@ class QuestionsController < ApplicationController
 
   def destroy
     puts "hello"
+    user=@question.user
     @question.destroy
+    user_rep(user)
     flash[:success] = "Question deleted"
     redirect_to  root_url
   end

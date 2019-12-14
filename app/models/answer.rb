@@ -6,7 +6,13 @@ class Answer < ApplicationRecord
   validates :content, presence: true, length: {maximum: 30000,too_long: "%{count} characters is the maximum allowed" }
   mount_uploader :picture, PictureUploader
 
+  def upvote
+    increment(:votes_rep,1)
+  end
 
+  def downvote
+    decrement(:votes_rep,1)
+  end
 
   private
   def picture_size

@@ -20,7 +20,7 @@ class AnswersController < ApplicationController
   end
 
   def update
-    @answer=Answer.find(params[:id])
+    #@answer=Answer.find(params[:id])
     @answer.update(question_params)
     if @answer.update(question_params)
       flash.now[:success] = "Answer updated"
@@ -32,7 +32,9 @@ class AnswersController < ApplicationController
 
   def destroy
     @answer.destroy
+    user=@answer.user
     flash[:success] = "Answer deleted"
+    user_rep(user)
     redirect_to request.referrer || root_url
   end
   

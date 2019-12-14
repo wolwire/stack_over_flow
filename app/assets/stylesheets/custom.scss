@@ -45,14 +45,14 @@ h1 {
   font-size: 3em;
   letter-spacing: -2px;
   margin-bottom: 30px;
-  text-align: center;
+
 }
 
 h2 {
   font-size: 1.2em;
   letter-spacing: -1px;
   margin-bottom: 30px;
-  text-align: center;
+  text-align: left;
   font-weight: normal;
   color: $gray-light;
 }
@@ -61,6 +61,12 @@ p {
   font-size: 1.1em;
   line-height: 1.7em;
 }
+
+.badge.badge-secondary{
+  color: lightgrey;
+  a{
+  color: #434581;
+}}
 
 
 /* header */
@@ -191,17 +197,36 @@ footer {
 
 /* forms */
 
-input, textarea, select, .uneditable-input {
-  border: 1px solid #bbb;
-  width: 100%;
+input, select, .uneditable-input {
+  border: 2px solid #bbb;
+  border-radius: 4px;
+  padding: 10px ;
+  width: 50%;
   margin-bottom: 15px;
   @include box_sizing;
-
 }
+
+
 
 input {
   height: auto !important;
 }
+
+textarea{
+  border: 2px solid #bbb;
+  border-radius: 4px;
+  padding: 10px;
+  height: 300px;
+  width: 50%;
+}
+
+.col.col-xl-20.ques {
+margin-left: 12.5%;
+width: 150%;
+
+}
+
+
 
 #error_explanation {
   color: red;
@@ -320,11 +345,76 @@ span.picture {
   color: #f1f1f1;
 }
 
+
 /* Style page content */
 .main {
   margin-left: 160px; /* Same as the width of the sidebar */
   padding: 0px 10px;
 }
+/* User card */
+.album {
+  min-height: 50rem; /* Can be removed; just added for demo purposes */
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  margin-left: 6.5%;
+
+}
+
+.card {
+  float: left;
+  width: 25%;
+  padding: .75rem ;
+  margin-bottom: 3rem;
+  margin-left: 3rem;
+  border: 0;
+  background-color: #ccd3d2;
+  strong{
+    color: aqua;
+  }
+  .btn.btn-primary{
+    border: 0px ;
+    background-color: blue;
+    width: 100%;
+  }
+}
+
+
+.card-text {
+  font-size: 120%;
+}
+
+.question_box{
+  border:  10px solid $gray-lighter;
+  padding: 10px;
+  h1{
+    left: 10px;
+    text-align: left;
+  }
+  h2{
+    text-justify: auto;
+  }
+
+}
+
+.answer{
+  textarea{
+    width: 60%;
+    height: 300px;
+  }
+}
+
+.comment{
+  textarea{
+    width: 70%;
+    height: 70px;
+  }
+  .btn-primary{
+    width: 70%;
+  }
+}
+
+
+
 
 
 

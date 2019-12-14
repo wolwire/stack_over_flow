@@ -8,14 +8,7 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 <body>
-
-
-
-
-
-
 <%= render 'layouts/header' %>
-
 <% if logged_in? %>
   <%= render "layouts/sidebar"%>
   <div class="main">
@@ -27,6 +20,7 @@
     </div>
   </div>
 <% else %>
+
   <div class="container">
     <% flash.each do |message_type, message| %>
       <div class="alert alert-<%= message_type %>"><%= message %></div>

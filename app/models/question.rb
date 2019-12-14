@@ -20,29 +20,18 @@ class Question < ApplicationRecord
     end
   end
 
-  def upvote(vote)
-    vote = check_vote(vote)
-    increment!(:votes,vote)
+  def upvote
+    increment!(:vote_rep,1)
   end
 
-  def downvote(vote)
-    vote = check_vote(vote)
-    decrement!(:votes,vote)
+  def downvote
+    decrement!(:vote_rep,1)
   end
 
 
   private
 
 
-  def check_vote(vote)
-    if (vote > 1)
-      1
-    elsif (vote < -1)
-      -1
-    else
-      vote
-    end
-  end
 
   def picture_size
     if picture.size>5.megabyte

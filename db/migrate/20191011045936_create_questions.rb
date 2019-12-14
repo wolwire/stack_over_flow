@@ -4,7 +4,7 @@ class CreateQuestions < ActiveRecord::Migration[5.2]
       t.string :header
       t.text :content
       t.string :picture
-      t.integer :votes
+      t.integer :votes_rep ,default: 0
       t.references :user , foreign_key: true, null:false
       t.timestamps
     end

@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   include SessionsHelper
   include ActionController::Live
+  include ApplicationHelper
   rescue_from ActionController::RoutingError, with: -> { render_404  }
 
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found

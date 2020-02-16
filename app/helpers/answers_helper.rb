@@ -1,6 +1,2 @@
 module AnswersHelper
-
-
-
-
 end

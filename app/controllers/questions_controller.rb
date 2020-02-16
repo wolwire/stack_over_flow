@@ -5,18 +5,17 @@ class QuestionsController < ApplicationController
 
 
   def index
-    @questions=Question.all.paginate(page: params[:page])
+    @questions = Question.all.paginate(page: params[:page])
   end
 
   def new
-    @question=Question.new
+    @question = Question.new
   end
 
   def create
-    @question=current_user.questions.build(question_params)
-    add_tags(params[:tags][:tags])
+    @question = current_user.questions.build(question_params)
+    add_tags(params[:tags])
     if @question.save
-
       flash[:success] = "Question created!"
       redirect_to @question
     else
@@ -26,33 +25,28 @@ class QuestionsController < ApplicationController
   end
 
   def search
-    @questions=search_ques(params[:search])
+    @questions = Question.search_ques(params[:search])
     if @questions.nil? || @questions.empty?
       flash[:info] = "Couldn\'t find #{params[:search]}"
       redirect_to root_path
     else
-      @questions=@questions.paginate(page: params[:page])
+      @questions = @questions.paginate(page: params[:page])
     end
   end
 
-
-
   def show
-    @question=Question.find(params[:id])
-    @answers=@question.answers
-    @tags=@question.tags
+    @question = Question.includes(:answers, :tags).where(id: params[:id]).first
+    @answers = @question.answers
+    @tags = @question.tags
   end
-
-
 
   def edit
-    @question=Question.find(params[:id])
+    @question = Question.find(params[:id])
   end
 
-
-
   def update
-    @question=Question.find(params[:id])
+    @question = Question.find(params[:id])
+
     @question.update(question_params)
     if @question.update(question_params)
       flash[:success] = "Question updated"
@@ -63,24 +57,21 @@ class QuestionsController < ApplicationController
   end
 
   def destroy
-    puts "hello"
     @question.destroy
     flash[:success] = "Question deleted"
     redirect_to  root_url
   end
 
-
-
   private
 
   def add_tags(args)
     args = args.split(" ")
+    tags = Tag.where("name IN (?)", args)
     args.each do |arg|
-      tag=Tag.find_by(name: arg)
-      if tag.nil?
-        @question.tags<<Tag.create(name:arg)
+      if tags&.includes(arg)
+        @question.tags << Tag.create(name: arg)
       else
-        @question.tags<<tag
+        @question.tags << tag
       end
     end
   end
@@ -93,5 +84,4 @@ class QuestionsController < ApplicationController
     @question = current_user.questions.find_by(id: params[:id])
     redirect_to root_url if @question.nil?
   end
-
 end

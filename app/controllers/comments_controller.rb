@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
   before_action :correct_user, only: :destroy
 
   def create
-    @comment=current_user.comment.build(comment_params)
+    @comment = current_user.comment.build(comment_params)
     if @comment.save
       flash.now[:success] = "Comment created!"
       redirect_back(fallback_location: root_path)
@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
   end
 
   def edit
-    @comment=Comment.find(params[:id])
+    @comment = Comment.find(params[:id])
   end
 
   def destroy
@@ -23,8 +23,10 @@ class CommentsController < ApplicationController
   end
 
   def update
-    @comment=Comment.find(params[:id])
+    @comment = Comment.find(params[:id])
+
     @comment.update(comment_params)
+
     if @comment.update(comment_params)
       flash.now[:success] = "Comment updated"
     else
@@ -33,6 +35,7 @@ class CommentsController < ApplicationController
   end
 
   private
+
   def comment_params
     params.require(:comment).permit( :content,:commentable_id, :commentable_type)
   end
@@ -41,6 +44,4 @@ class CommentsController < ApplicationController
     @comment = current_user.comment.find_by(id: params[:id])
     redirect_to root_url if @comment.nil?
   end
-
-
 end

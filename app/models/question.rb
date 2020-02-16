@@ -5,9 +5,12 @@ class Question < ApplicationRecord
   include Commentable, Votable
 
   validates :header , presence: true, length: {maximum: 100}
-  validates :content, presence: true, length: {maximum: 30000,too_long: "%{count} characters is the maximum allowed" }
-  mount_uploader :picture, PictureUploader
+  validates :content, presence: true, length: {maximum: 30000, too_long: "%{count} characters is the maximum allowed" }
   validates :user_id, presence: true
+
+  def self.search_ques(search_string)
+    self.where("header LIKE ? ", "%#{search_string}%")
+  end
 
   def add_tags(args)
     args.each do |arg|
@@ -30,9 +33,7 @@ class Question < ApplicationRecord
     decrement!(:votes,vote)
   end
 
-
   private
-
 
   def check_vote(vote)
     if (vote > 1)
@@ -49,5 +50,4 @@ class Question < ApplicationRecord
       errors.add(:picture , "should be less than 5MB")
     end
   end
-
 end

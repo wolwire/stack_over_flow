@@ -1,16 +1,20 @@
 <% provide(:title, "Home") %>
 <% if logged_in? %>
   <div class="row">
-
-  <div class="col-md-8">
-    <%= render @questions %>
+    <div class="col-md-8">
+      <%= render @questions %>
+    </div>
   </div>
-
   <% else%>
-    <p>
+  <div class="row">
+    <div class="col col-md-5 col-md-offset-3">
       <%=render "questions/search" %>
-      <%= link_to "Sign up now!", '#', class: "btn btn-lg btn-primary" %>
-    </p>
+    </div>
+  </div>
+  <div class="row" style="margin-top: 20px">
+    <div class="col col-md-5 col-md-offset-3">
+      <%= link_to "Sign up now!", '#', class: "btn btn-primary" %>
+    </div>
   </div>
 <% end %>
 

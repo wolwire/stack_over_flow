@@ -9,10 +9,10 @@
   <h2><%= simple_format(@question.content)%></h2>
 
 <% if logged_in? %>
-<% if a=current_user.votes.find_by(votable:@question) %>
+  <% if a=current_user.votes.find_by(votable:@question) %>
     <% if a.vote.nil? %>
-  <%= link_to "Upvote",upvote_path(votable_id:@question.id,votable_type:"Question",user_id:current_user.id),method: :post %>
-      <h3> <%=@question.votes_rep %> </h3>
+    <%= link_to "Upvote",upvote_path(votable_id:@question.id,votable_type:"Question",user_id:current_user.id), method: :post, remote: true %>
+      <h3> <%= @question.votes_rep %> </h3>
     <%= link_to "Downvote", downvote_path(votable_id:@question.id,votable_type:"Question",user_id:current_user.id),method: :post %>
     <% elsif a.vote %>
       <%= link_to "Upvoted", upvote_path(votable_id:@question.id, votable_type:"Question", user_id:current_user.id), method: :post %>
@@ -20,12 +20,12 @@
        <%= link_to "Downvote",downvote_path(votable_id:@question.id,votable_type:"Question",user_id:current_user.id),method: :post %>
       <%else %>
       <%= link_to "Upvote", upvote_path(votable_id:@question.id,votable_type:"Question",user_id:current_user.id),method: :post %>
-      <h3> <%=@question.votes_rep%> </h3>
+      <h3> <%= @question.votes_rep%> </h3>
       <%= link_to "Downvoted",downvote_path(votable_id:@question.id,votable_type:"Question",user_id:current_user.id),method: :post %>
     <%end %>
     <%else %>
     <%= link_to "Upvote", upvote_path(votable_id:@question.id,votable_type:"Question",user_id:current_user.id),method: :post %>
-    <h3> <%=@question.votes_rep%> </h3>
+    <h3> <%= @question.votes_rep %> </h3>
     <%= link_to "Downvote", downvote_path(votable_id:@question.id,votable_type:"Question",user_id:current_user.id),method: :post %>
   <%end %>
     <%end %>

@@ -1,0 +1,28 @@
+/* footer */
+
+footer {
+  position: sticky;
+  padding: 20px;
+  width: 100%;
+  min-height: 100px;
+  background-color: #111111;
+  z-index: 3;
+
+  a {
+    color: gray;
+    &:hover {
+      color: gray;
+    }
+  }
+  small {
+    float: left;
+  }
+  ul {
+    float: right;
+    list-style: none;
+    li {
+      float: left;
+      margin-left: 15px;
+    }
+  }
+}

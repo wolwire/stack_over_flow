@@ -1,3 +1,47 @@
 // Place all the styles related to the User controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+/* Users index */
+
+.users {
+  list-style: none;
+  margin: 0;
+  li {
+    overflow: auto;
+    padding: 10px 0;
+    border-bottom: 1px solid lightgray;
+  }
+}
+
+/* User card */
+.album {
+  min-height: 50rem; /* Can be removed; just added for demo purposes */
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  margin-left: 6.5%;
+
+}
+
+.card {
+  float: left;
+  width: 25%;
+  padding: .75rem ;
+  margin-bottom: 3rem;
+  margin-left: 3rem;
+  border: 0;
+  background-color: #ccd3d2;
+  strong{
+    color: aqua;
+  }
+  .btn.btn-primary{
+    border: 0px ;
+    background-color: blue;
+    width: 100%;
+  }
+}
+
+.card-text {
+  font-size: 120%;
+}

@@ -1,3 +1,21 @@
-// Place all the styles related to the questions controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.question_box{
+  border:  10px solid lightgray;
+  padding: 10px;
+  h1{
+    left: 10px;
+    text-align: left;
+  }
+  h2{
+    text-justify: auto;
+  }
+}
+
+.questions {
+  list-style: none;
+  margin: 0;
+  li {
+    overflow: auto;
+    padding: 10px 0;
+    border-bottom: 1px solid lightgray;
+  }
+}

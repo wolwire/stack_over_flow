@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/faker-ruby/faker.git
+  revision: 7966190d46fd8165b58f3be1bffe41d37ccaea7c
+  branch: master
+  specs:
+    faker (2.10.2)
+      i18n (>= 1.6, < 2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -82,8 +90,6 @@ GEM
     erubi (1.9.0)
     excon (0.67.0)
     execjs (2.7.0)
-    faker (2.1.2)
-      i18n (>= 0.8)
     ffi (1.11.1)
     fission (0.5.0)
       CFPropertyList (~> 2.2)
@@ -400,7 +406,7 @@ DEPENDENCIES
   capybara
   carrierwave (= 0.11.2)
   database_cleaner
-  faker (= 2.1.2)
+  faker!
   fog (= 1.38.0)
   guard (= 2.13.0)
   guard-minitest (= 2.4.4)

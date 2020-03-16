@@ -9,14 +9,15 @@ class QuestionsController < ApplicationController
   end
 
   def new
-    @question=Question.new
+    @question = Question.new
   end
 
   def create
     @question=current_user.questions.build(question_params)
-    add_tags(params[:tags][:tags])
-    if @question.save
 
+    add_tags(params[:tags][:tags])
+
+    if @question.save
       flash[:success] = "Question created!"
       redirect_to @question
     else
@@ -34,12 +35,10 @@ class QuestionsController < ApplicationController
     end
   end
 
-
-
   def show
-    @question=Question.find(params[:id])
-    @answers=@question.answers
-    @tags=@question.tags
+    @question = Question.where('id is ?', params[:id]).include(:answer, :tags)
+    @answers = @question.answers
+    @tags = @question.tags
   end
 
 
@@ -77,9 +76,9 @@ class QuestionsController < ApplicationController
   def add_tags(args)
     args = args.split(" ")
     args.each do |arg|
-      tag=Tag.find_by(name: arg)
+      tag = Tag.find_by(name: arg)
       if tag.nil?
-        @question.tags<<Tag.create(name:arg)
+        @question.tags << Tag.create(name:arg)
       else
         @question.tags<<tag
       end

@@ -18,6 +18,7 @@ Rails.application.routes.draw do
 
   post '/upvote', to: 'votes#up_vote'
   post '/downvote', to: 'votes#down_vote'
+
   resources :users
   resources :account_activations , only: [:edit]
   resources :password_resets , only:[:new, :create, :edit, :update]

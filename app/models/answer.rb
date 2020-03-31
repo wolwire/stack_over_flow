@@ -4,7 +4,6 @@ class Answer < ApplicationRecord
   include Commentable, Votable
 
   validates :content, presence: true, length: {maximum: 30000,too_long: "%{count} characters is the maximum allowed" }
-  mount_uploader :picture, PictureUploader
 
   def upvote
     increment(:votes_rep,1)

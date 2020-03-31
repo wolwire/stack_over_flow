@@ -6,7 +6,6 @@ class Question < ApplicationRecord
 
   validates :header , presence: true, length: {maximum: 100}
   validates :content, presence: true, length: {maximum: 30000,too_long: "%{count} characters is the maximum allowed" }
-  mount_uploader :picture, PictureUploader
   validates :user_id, presence: true
 
   def add_tags(args)
@@ -27,6 +26,7 @@ class Question < ApplicationRecord
   def downvote
     decrement!(:vote_rep,1)
   end
+
 
   private
 

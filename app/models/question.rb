@@ -28,10 +28,7 @@ class Question < ApplicationRecord
     decrement!(:vote_rep,1)
   end
 
-
   private
-
-
 
   def picture_size
     if picture.size>5.megabyte

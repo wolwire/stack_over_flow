@@ -12,10 +12,12 @@
 
 ActiveRecord::Schema.define(version: 2019_10_15_071044) do
 
-  create_table "answers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "answers", force: :cascade do |t|
     t.text "content"
     t.string "picture"
-    t.integer "votes_rep", default: 0
     t.bigint "user_id"
     t.bigint "question_id"
     t.datetime "created_at", null: false
@@ -24,7 +26,7 @@ ActiveRecord::Schema.define(version: 2019_10_15_071044) do
     t.index ["user_id"], name: "index_answers_on_user_id"
   end
 
-  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "comments", force: :cascade do |t|
     t.string "content"
     t.bigint "user_id", null: false
     t.string "commentable_type"
@@ -35,31 +37,31 @@ ActiveRecord::Schema.define(version: 2019_10_15_071044) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
-  create_table "questions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "questions", force: :cascade do |t|
     t.string "header"
     t.text "content"
     t.string "picture"
-    t.integer "votes_rep", default: 0
+    t.integer "votes"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_questions_on_user_id"
   end
 
-  create_table "questions_tags", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "questions_tags", id: false, force: :cascade do |t|
     t.bigint "tag_id", null: false
     t.bigint "question_id", null: false
     t.index ["tag_id", "question_id"], name: "index_questions_tags_on_tag_id_and_question_id", unique: true
   end
 
-  create_table "tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "tags", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_tags_on_name", unique: true
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
     t.boolean "admin", default: false
@@ -76,7 +78,7 @@ ActiveRecord::Schema.define(version: 2019_10_15_071044) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
-  create_table "votes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "votes", force: :cascade do |t|
     t.boolean "vote"
     t.string "votable_type"
     t.bigint "votable_id"

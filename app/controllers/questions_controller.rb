@@ -26,11 +26,11 @@ class QuestionsController < ApplicationController
   end
 
   def search
-    @questions=search_ques(params[:search])
+    @questions = search_ques(params[:search])
     if  @questions.empty?
       flash[:info] = "Couldn\'t find #{params[:search]}"
     else
-      @questions=@questions.paginate(page: params[:page])
+      @questions = @questions.paginate(page: params[:page])
     end
   end
 

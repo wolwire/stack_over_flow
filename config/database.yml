@@ -10,12 +10,11 @@
 #   https://dev.mysql.com/doc/refman/5.7/en/password-hashing.html
 #
 default: &default
-  adapter: mysql2
-  encoding: utf8mb4
+  adapter: postgres
+  encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
   password: 123123
-  socket: /tmp/mysql.sock
 
 development:
   <<: *default
@@ -49,6 +48,3 @@ test:
 #
 production:
   <<: *default
-  database: stackoverflow_production
-  username: stackoverflow
-  password: <%= ENV['STACKOVERFLOW_DATABASE_PASSWORD'] %>

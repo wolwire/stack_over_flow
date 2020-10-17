@@ -17,10 +17,13 @@ gem 'jbuilder',                   '2.10.0'
 gem "nokogiri",                   '1.10.8'
 gem 'bootsnap',                   '1.4.6', require: false
 gem 'pg' ,                        '1.1.4'
+
 gem 'capistrano',                '~> 3.11',   require: false
 gem 'capistrano-rvm',            '~> 0.1.2',  require: false
 gem 'capistrano-rails',          '~> 1.4',    require: false
 gem 'capistrano-bundler',        '~> 2.0'
+gem 'capistrano-bundle_rsync',   '~> 0.5.2', require: false
+
 gem 'byebug',                    '11.0.1', platforms: [:mri, :mingw, :x64_mingw]
 
 group :development, :test do

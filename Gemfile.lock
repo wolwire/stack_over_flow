@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/faker-ruby/faker.git
-  revision: 6ab57e58c78f7c71745b0948b227ce40ad5a3329
+  revision: 17a50f8608aa8367598ab5f7f0eda6982afc73ec
   branch: master
   specs:
     faker (2.14.0)
@@ -84,6 +84,9 @@ GEM
       i18n
       rake (>= 10.0.0)
       sshkit (>= 1.9.0)
+    capistrano-bundle_rsync (0.5.2)
+      capistrano (>= 3.3.3)
+      parallel
     capistrano-bundler (2.0.1)
       capistrano (~> 3.1)
     capistrano-rails (1.6.1)
@@ -131,6 +134,7 @@ GEM
     nio4r (2.5.4)
     nokogiri (1.10.8)
       mini_portile2 (~> 2.4.0)
+    parallel (1.19.2)
     pg (1.1.4)
     puma (4.3.3)
       nio4r (~> 2.0)
@@ -243,6 +247,7 @@ DEPENDENCIES
   bootstrap-will_paginate (= 1.0.0)
   byebug (= 11.0.1)
   capistrano (~> 3.11)
+  capistrano-bundle_rsync (~> 0.5.2)
   capistrano-bundler (~> 2.0)
   capistrano-rails (~> 1.4)
   capistrano-rvm (~> 0.1.2)

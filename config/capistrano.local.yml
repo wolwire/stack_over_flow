@@ -1,0 +1,15 @@
+---
+app_name: stack_over_flow
+repository: git@github.com:wolwire/stack_over_flow.git
+branch: master
+paths:
+  server: /home/mayank
+  local: /Users/mayank/stack_over_flow
+  config: /home/mayank/stack_over_flow/current/config
+
+roles:
+  app:
+    - 35.226.215.7
+
+default_env:
+  RAILS_MASTER_KEY: 7ef6c65004913ef4eddcb47a4a4621be
